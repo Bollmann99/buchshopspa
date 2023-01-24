@@ -44,6 +44,7 @@ function checkout() {
 </script>
 
 <template>
+
   <div id="app">
     <h1>Buchshop - G20 </h1>
     <br />
@@ -51,8 +52,20 @@ function checkout() {
     <button class="suchebutton" @click="toggle = !toggle">
       {{ toggle? 'Zeige alle Buecher': 'Suchen' }}</button>
 
+    <table v-if="!toggle">
+      <tr>
+        <th>Buchtitel</th>
+        <th>Autor</th>
+        <th>Preis</th>
+      </tr>
+      <tr v-for="product in products">
+        <td>{{ product.Produkttitel }}</td>
+        <td>{{ product.Autorname }}</td>
+        <td>{{ product.PreisBrutto }}</td>
+      </tr>
+    </table>
 
-    <table v-if="showtable">
+    <table v-if="toggle">
       <tr>
         <th>Buchtitel</th>
         <th>Autor</th>
